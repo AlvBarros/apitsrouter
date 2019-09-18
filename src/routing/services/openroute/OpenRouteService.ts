@@ -1,6 +1,6 @@
 import { Point } from "../../../business/pathfinder/point/Point";
+import token from "../../../creds/token.json";
 import HttpHelper from "../utils/HttpHelper";
-import token from "./token.json";
 
 import * as rp from "request-promise";
 

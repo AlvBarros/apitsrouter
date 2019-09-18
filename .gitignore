@@ -1,5 +1,3 @@
 dist
 node_modules
-dbcreds.json
-jwt.json
-token.json
+src/creds/*

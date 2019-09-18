@@ -1,6 +1,6 @@
 import jwt = require("jsonwebtoken-promisified");
 import User from "../../../business/account/User";
-import jwtCreds from "./jwt.json";
+import jwtCreds from "../../../creds/jwt.json";
 
 export class Authenticator {
     /*

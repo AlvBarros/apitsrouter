@@ -1,4 +1,4 @@
-import dbcreds from "../config/dbcreds.json";
+import dbcreds from "../../creds/dbcreds.json";
 
 import DTO from "../../business/templates/DTO";
 import Cloudant from "./Cloudant";
