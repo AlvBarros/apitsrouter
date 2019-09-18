@@ -1,6 +1,5 @@
 import User from "../../business/account/User";
 import UserFactory from "../../business/account/UserFactory";
-import Hotel from "../../business/hotel/Hotel";
 import DTO from "../../business/templates/DTO";
 import CloudantIndex from "../cloudant/CloudantIndex";
 
@@ -39,9 +38,6 @@ export class UserDTO extends DTO {
     }
     public query(field: string, value: string): Promise<IUserQueryResult> {
         return this.cloudant.query(field, value);
-    }
-    public async registerHotel(user: { email: string }, hotel: Hotel): Promise<boolean> {
-        return true;
     }
 }
 export default UserDTO;

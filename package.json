@@ -25,13 +25,19 @@
     "@types/express": "^4.17.0",
     "@types/socket.io": "^2.1.2",
     "@types/ws": "^6.0.1",
+    "axios": "^0.19.0",
     "body-parser": "1.19.0",
     "cfenv": "1.0.x",
     "express": "^4.17.1",
+    "http": "0.0.0",
+    "https": "^1.0.0",
     "jsonwebtoken-promisified": "^1.0.3",
+    "request": "^2.88.0",
+    "request-promise": "^4.2.4",
     "tslint": "5.18.0",
     "typescript": "^3.5.3",
-    "ws": "^7.1.0"
+    "ws": "^7.1.0",
+    "xmlhttprequest": "^1.8.0"
   },
   "engines": {
     "node": "11.2.0",

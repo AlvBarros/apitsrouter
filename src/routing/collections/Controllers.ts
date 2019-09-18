@@ -1,10 +1,11 @@
-import { Session } from "../controllers/session/Session";
+import Pathing from "../controllers/pathing/Pathing";
+import Session from "../controllers/session/Session";
 
 import Controller from "../../business/templates/Controller";
 
 export class Controllers {
     private controllers: Controller[] = [
-        new Session()
+        new Session(), new Pathing()
     ];
 
     constructor() {
