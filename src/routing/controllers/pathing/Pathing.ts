@@ -25,8 +25,27 @@ export class Pathing extends Controller {
             if (points.length === 2) {
                 // response.send(this.pathfinder.getPathBetweenPoints(points));
                 this.openRoute.getDirections(points[0], points[1]).then((body) => {
-                    console.log("return");
-                    console.log(body);
+                    response.send(body);
+                }).catch((err) => {
+                    response.send(err);
+                });
+            } else if (points.length === 0) {
+                throw Error("No points were given.");
+            } else {
+                throw Error("Unknown error.");
+            }
+        } catch (e) {
+            response.send(e);
+        }
+    });
+
+    public getMatrix = this.routeFactory.createRoute("POST", "matrix",
+    async (request: express.Request, response: express.Response) => {
+        try {
+            const points = this.pointFactory.pointsFromArray(request.body.points);
+            if (points.length > 0) {
+                // response.send(this.pathfinder.getPathBetweenPoints(points));
+                this.openRoute.getTimeMatrix(points).then((body) => {
                     response.send(body);
                 }).catch((err) => {
                     response.send(err);
@@ -42,7 +61,7 @@ export class Pathing extends Controller {
     });
 
     public routes: Route[] = [
-        this.getRoute
+        this.getRoute, this.getMatrix
     ];
 }
 export default Pathing;
