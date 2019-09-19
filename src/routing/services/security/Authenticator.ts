@@ -9,8 +9,6 @@ export class Authenticator {
     }, 'secret', { expiresIn: 60 * 60 });
     */
     public async generateToken(usr: User): Promise<string> {
-        console.log("generating token");
-        console.log(usr);
         return jwt.signAsync(`${usr.email}`, jwtCreds.secret);
     }
     public async verify(token): Promise<string> {

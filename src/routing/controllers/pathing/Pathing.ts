@@ -1,13 +1,14 @@
 import * as express from "express";
 
 import Controller from "../../../business/templates/Controller";
-
 import RouteFactory from "../RouteFactory";
 
 import Pathfinder from "../../../business/pathfinder/Pathfinder";
 import Point from "../../../business/pathfinder/point/Point";
 import PointFactory from "../../../business/pathfinder/point/PointFactory";
 import Route from "../../../business/templates/Route";
+import Rule from "../../../business/pathfinder/rules/Rule";
+
 import OpenRouteService from "../../../routing/services/openroute/OpenRouteService";
 
 export class Pathing extends Controller {
@@ -23,11 +24,10 @@ export class Pathing extends Controller {
         try {
             const points = this.pointFactory.pointsFromArray(request.body.points);
             if (points.length === 2) {
-                // response.send(this.pathfinder.getPathBetweenPoints(points));
                 this.openRoute.getDirections(points[0], points[1]).then((body) => {
                     response.send(body);
                 }).catch((err) => {
-                    response.send(err);
+                    throw new Error(err);
                 });
             } else if (points.length === 0) {
                 throw Error("No points were given.");
@@ -35,7 +35,7 @@ export class Pathing extends Controller {
                 throw Error("Unknown error.");
             }
         } catch (e) {
-            response.send(e);
+            response.send(e.message);
         }
     });
 
@@ -44,11 +44,11 @@ export class Pathing extends Controller {
         try {
             const points = this.pointFactory.pointsFromArray(request.body.points);
             if (points.length > 0) {
-                // response.send(this.pathfinder.getPathBetweenPoints(points));
-                this.openRoute.getTimeMatrix(points).then((body) => {
-                    response.send(body);
+                this.openRoute.getTimeMatrix(points).then((matrix) => {
+                    // response.send(this.pathfinder.getBestRouteFromMatrix(matrix, points[0], points[1], new Rule[0]));
+                    response.send(matrix);
                 }).catch((err) => {
-                    response.send(err);
+                    throw new Error(err);
                 });
             } else if (points.length === 0) {
                 throw Error("No points were given.");
@@ -56,7 +56,7 @@ export class Pathing extends Controller {
                 throw Error("Unknown error.");
             }
         } catch (e) {
-            response.send(e);
+            response.send(e.message);
         }
     });
 
