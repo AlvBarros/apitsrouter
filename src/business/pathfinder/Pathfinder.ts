@@ -13,6 +13,7 @@ export class Pathfinder {
         }
     }
     public validateValuesForBestRoute(matrix: Matrix, start: Point, end: Point, rules: Rule[]): boolean {
+        // Validate if every point is inside the matrix
         const points = new Point[0];
         points.push(matrix.points);
         points.push(start); points.push(end);
@@ -24,7 +25,7 @@ export class Pathfinder {
         if (!points.some((point) => { return !this.validatePointInMatrix(matrix, point)})) {
             return false;
         }
-        return false;
+        return true;
     }
     public validatePointInMatrix(matrix: Matrix, location: Point): boolean {
         return matrix.points.some((point) => {

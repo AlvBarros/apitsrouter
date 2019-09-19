@@ -13,5 +13,9 @@ export class Point {
     public addPaths(paths: Path[]) {
         this.possiblePaths = paths;
     }
+
+    public isEqualToPoint(point: Point) : boolean {
+        return this.Latitude === point.Latitude && this.Longitude === point.Longitude;
+    }
 }
 export default Point;
